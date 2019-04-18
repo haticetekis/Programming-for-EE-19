@@ -15,8 +15,8 @@ title('Hyperbolic trigonometric functions plotting')
 legend('sinh(x)','cosh(x)')
 %% Question#2
 E=8.85*10^-12; %Air permeability (Epsilon)
-a=3*10^2 % a side of the capasitor
-b=4*10^2 % b side of the capasitor
+a=30*10^(-2) % a side of the capasitor
+b=40*10^(-2) % b side of the capasitor
 d=0.002:0.00001:0.01; % distance between two conductor plates
 A=a*b; % Area of a conductor plate
 C=E*A./d; %Capasitor
