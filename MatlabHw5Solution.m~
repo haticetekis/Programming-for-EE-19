@@ -1,0 +1,66 @@
+clc
+clear all
+close all
+R=1000;
+C=0.000001;
+T=0.001 %Tau=R*C
+delta=0.00001;
+t=0:delta:0.01;
+V_r=15;
+V=-V_r*(exp(-t/T));
+plot(t,V,'color','b')
+%% Curve fitting
+p1=polyfit(t,V,1)
+p2=polyfit(t,V,2)
+p3=polyfit(t,V,3)
+p4=polyfit(t,V,4)
+p5=polyfit(t,V,5)
+p6=polyfit(t,V,6)
+y1 = polyval(p1,t);
+y2 = polyval(p2,t);
+y3=  polyval(p3,t);
+y4=  polyval(p4,t);
+y5 = polyval(p5,t);
+y6 = polyval(p6,t);
+figure
+plot(t,V,'-.')
+hold on
+plot(t,y1)
+hold on
+plot(t,y2)
+hold on
+plot(t,y3)
+hold on
+plot(t,y4)
+hold on
+plot(t,y5)
+hold on
+plot(t,y6)
+legend('function','linear','quadratic','cubic','forth degree','fifth degree','sixth degree','Location','NorthEastOutside')
+f1=V-y1;
+f2=V-y2;
+f3=V-y3;
+f4=V-y4;
+f5=V-y5;
+f6=V-y6;
+rms1=rms(f1)
+rms2=rms(f2)
+rms3=rms(f3)
+rms4=rms(f4)
+rms3=rms(f5)
+rms4=rms(f6)
+%% Question#2 
+%% Linear Interpolation
+t=0:10
+tint1=0:1:10
+temp=[72.5 78.1 86.4 92.3 110.6 111.5 109.3 110.2 110.5 109.9 110.2];
+figure
+temp_int1 = interp1(t,temp,tint1);
+plot(t,temp,'o',tint1,temp_int1,':.');
+title('Linear Interpolation');
+%% Cubic Spline Interpolation
+tspline=0:0.1:10;
+temp_spline = spline(t,temp,tspline);
+figure
+plot(t,temp,'*',tspline,temp_spline,'.-')
+%% 
